@@ -1,24 +1,26 @@
 {
-  "name": "iconsole-logger",
-  "version": "1.0.2",
-  "description": "A better console logger",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "logger"
-  ],
-  "author": "Andre Kosak",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "10.3.0",
-    "typescript": "2.8.3"
-  },
-  "dependencies": {
-    "chalk": "2.4.1",
-    "moment": "2.22.2"
-  }
+	"name": "iconsole-logger",
+	"version": "1.0.2",
+	"description": "A better console logger",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": ["logger","nodejs","typescript","console","log"],
+	"author": "Andre Kosak",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "https://gitlab.com/andrekosak/iconsole-logger.git"
+	},
+	"devDependencies": {
+		"@types/node": "10.3.0",
+		"typescript": "2.8.3"
+	},
+	"dependencies": {
+		"chalk": "2.4.1",
+		"moment": "2.22.2"
+	}
 }
