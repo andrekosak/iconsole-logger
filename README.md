@@ -40,4 +40,4 @@ logger.print(`Print example`)
 
 In both cases you should get output in terminal similar to this:
 
-![Output example](./docs/screen_1.png 'Output example')
+![Output example](docs/screen_1.png 'Output example')
