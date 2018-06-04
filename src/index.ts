@@ -13,7 +13,7 @@ class logger {
 		this.color = options.color || 'white';
 		return this;
 	}
-	log(msg: any) {
+	log(...logArgs: any[]) {
 		// Clone arguments
 		this.logArguments = [].slice.call(arguments);
 
@@ -99,13 +99,13 @@ const OPTIONS: Options = {
 	}
 };
 
-export const log = (msg: any) => {
+export const log = (...logArgs: any[]) => {
 	const options = {
 		token: OPTIONS.methods.log.token, 
 		color: OPTIONS.methods.log.color
 	};
 	const loggerInstance = new logger('log', options);
-	loggerInstance.log(msg);
+	loggerInstance.log(...logArgs);
 };
 
 export const error = (msg: any) => {
