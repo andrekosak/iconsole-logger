@@ -1,8 +1,8 @@
-## What is this
+## Overview
 
 A better console logger. It has timestamps, colors and more
 
-## Install
+## Getting started
 
 ```
 npm i iconsole-logger -S
