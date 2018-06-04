@@ -2,21 +2,19 @@ const moment = require('moment');
 const chalk = require('chalk');
 const util = require('util');
 
-class logger {
+class Logger {
 	level: string;
 	token: string;
 	color: string;
 	logArguments: any[] = [];
-	constructor(level: keyof Options['methods'], options: any) {
+	constructor(level: keyof LoggerConfig['methods'], options: any) {
 		this.level = level;
 		this.token = options.token || '';
 		this.color = options.color || 'white';
 		return this;
 	}
 	log(...logArgs: any[]) {
-		// Clone arguments
-		this.logArguments = [].slice.call(arguments);
-
+		this.logArguments = logArgs;
 		this.logArguments = this.addTimestamp();
 		this.logArguments = this.addToken();
 		this.logArguments = this.logArguments.map(el => {
@@ -33,7 +31,7 @@ class logger {
 		);
 	}
 	addTimestamp() {
-		return ['[' + this.getTimeStamp() + ']', ...this.logArguments];
+		return [`[${this.getTimeStamp()}]`, ...this.logArguments];
 	}
 	addToken() {
 		return [this.token, ...this.logArguments];
@@ -60,7 +58,7 @@ interface MethodOptions {
 	token: string;
 }
 
-interface Options {
+interface LoggerConfig {
 	methods: {
 		print: MethodOptions;
 		warn: MethodOptions;
@@ -70,7 +68,7 @@ interface Options {
 		error: MethodOptions;
 	};
 }
-const OPTIONS: Options = {
+const defaultConfig: LoggerConfig = {
 	methods: {
 		ok: {
 			color: 'yellow',
@@ -101,36 +99,36 @@ const OPTIONS: Options = {
 
 export const log = (...logArgs: any[]) => {
 	const options = {
-		token: OPTIONS.methods.log.token, 
-		color: OPTIONS.methods.log.color
+		token: defaultConfig.methods.log.token, 
+		color: defaultConfig.methods.log.color
 	};
-	const loggerInstance = new logger('log', options);
+	const loggerInstance = new Logger('log', options);
 	loggerInstance.log(...logArgs);
 };
 
 export const error = (msg: any) => {
 	const options = {
-		token: OPTIONS.methods.error.token,
-		color: OPTIONS.methods.error.color
+		token: defaultConfig.methods.error.token,
+		color: defaultConfig.methods.error.color
 	};
-	const loggerInstance = new logger('error', options);
+	const loggerInstance = new Logger('error', options);
 	loggerInstance.log(msg);
 };
 
 export const success = (msg: any) => {
 	const options = {
-		token: OPTIONS.methods.success.token,
-		color: OPTIONS.methods.success.color
+		token: defaultConfig.methods.success.token,
+		color: defaultConfig.methods.success.color
 	};
-	const loggerInstance = new logger('success', options);
+	const loggerInstance = new Logger('success', options);
 	loggerInstance.log(msg);
 };
 
 export const print = (msg: any) => {
 	const options = {
-		token: OPTIONS.methods.print.token,
-		color: OPTIONS.methods.print.color
+		token: defaultConfig.methods.print.token,
+		color: defaultConfig.methods.print.color
 	};
-	const loggerInstance = new logger('print', options);
+	const loggerInstance = new Logger('print', options);
 	loggerInstance.log(msg);
 };
