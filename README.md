@@ -1,3 +1,5 @@
+![License MIT](https://img.shields.io/badge/license-ISC-blue.svg) [![Analytics](https://ga-beacon.appspot.com/UA-82522402-2/readme)](https://github.com/igrigorik/ga-beacon)
+
 ## Overview
 
 A better console logger. It has timestamps, colors and more.
