@@ -3,11 +3,12 @@
 A better console logger. It has timestamps, colors and more.
 
 Why use it?
-* Written with Typescript! So types are included for safety and joy
-* No configuration needed
-* Timestamp includes milliseconds (for precise debugging)
-* Just require the `log` function and you are good to go
-* A nice "token" symbol at the beginning of each line (see #Usage)
+
+- Written with Typescript! So types are included for safety and joy
+- No configuration needed
+- Timestamp includes milliseconds (for precise debugging)
+- Just require the `log` function and you are good to go
+- A nice "token" symbol at the beginning of each line (see #Usage)
 
 ## Getting started
 
@@ -41,4 +42,4 @@ logger.print(`Print example`)
 
 In both cases you should get output in terminal similar to this:
 
-![Output example](docs/screen_1.png 'Output example')
+![Output example](https://gitlab.com/andrekosak/iconsole-logger/raw/master/docs/screen_1.png 'Output example')
