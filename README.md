@@ -3,7 +3,8 @@
 A better console logger. It has timestamps, colors and more.
 
 Why use it?
-* No need for configuration
+* Written with Typescript! So types are included for safety and joy
+* No configuration needed
 * Timestamp includes milliseconds (for precise debugging)
 * Just require the `log` function and you are good to go
 * A nice "token" symbol at the beginning of each line (see #Usage)
