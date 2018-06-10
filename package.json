@@ -1,6 +1,6 @@
 {
 	"name": "iconsole-logger",
-	"version": "1.0.11",
+	"version": "1.0.12",
 	"description": "A better console logger",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -8,10 +8,16 @@
 		"build": "tsc",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"keywords": ["logger","nodejs","typescript","console","log"],
+	"keywords": [
+		"logger",
+		"nodejs",
+		"typescript",
+		"console",
+		"log"
+	],
 	"author": "Andre Kosak",
-  "license": "ISC",
-  "homepage": "https://gitlab.com/andrekosak/iconsole-logger/tree/master",
+	"license": "ISC",
+	"homepage": "https://gitlab.com/andrekosak/iconsole-logger/tree/master",
 	"repository": "gitlab:andrekosak/iconsole-logger",
 	"devDependencies": {
 		"@types/node": "10.3.0",
