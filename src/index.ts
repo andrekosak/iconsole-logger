@@ -106,29 +106,38 @@ export const log = (...logArgs: any[]) => {
 	loggerInstance.log(...logArgs);
 };
 
-export const error = (msg: any) => {
+export const error = (...logArgs: any[]) => {
 	const options = {
 		token: defaultConfig.methods.error.token,
 		color: defaultConfig.methods.error.color
 	};
 	const loggerInstance = new Logger('error', options);
-	loggerInstance.log(msg);
+	loggerInstance.log(...logArgs);
 };
 
-export const success = (msg: any) => {
+export const success = (...logArgs: any[]) => {
 	const options = {
 		token: defaultConfig.methods.success.token,
 		color: defaultConfig.methods.success.color
 	};
 	const loggerInstance = new Logger('success', options);
-	loggerInstance.log(msg);
+	loggerInstance.log(...logArgs);
 };
 
-export const print = (msg: any) => {
+export const print = (...logArgs: any[]) => {
 	const options = {
 		token: defaultConfig.methods.print.token,
 		color: defaultConfig.methods.print.color
 	};
 	const loggerInstance = new Logger('print', options);
-	loggerInstance.log(msg);
+	loggerInstance.log(...logArgs);
+};
+
+export const warn = (...logArgs: any[]) => {
+	const options = {
+		token: defaultConfig.methods.warn.token,
+		color: defaultConfig.methods.warn.color
+	};
+	const loggerInstance = new Logger('warn', options);
+	loggerInstance.log(...logArgs);
 };
