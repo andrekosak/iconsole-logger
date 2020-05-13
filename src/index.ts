@@ -1,3 +1,6 @@
+import { defaultConfig } from './defaults';
+import { LoggerConfig } from './interfaces';
+
 const moment = require('moment');
 const chalk = require('chalk');
 const util = require('util');
@@ -53,53 +56,9 @@ class Logger {
 	}
 }
 
-interface MethodOptions {
-	color: string;
-	token: string;
-}
-
-interface LoggerConfig {
-	methods: {
-		print: MethodOptions;
-		warn: MethodOptions;
-		success: MethodOptions;
-		ok: MethodOptions;
-		log: MethodOptions;
-		error: MethodOptions;
-	};
-}
-const defaultConfig: LoggerConfig = {
-	methods: {
-		ok: {
-			color: 'yellow',
-			token: ' ✔ ︎'
-		},
-		print: {
-			color: 'gray',
-			token: ' ▸ '
-		},
-		error: {
-			color: 'red',
-			token: ' ✘ '
-		},
-		log: {
-			color: 'white',
-			token: ' ℹ︎ '
-		},
-		warn: {
-			color: 'magenta',
-			token: ' ⚠︎ '
-		},
-		success: {
-			color: 'green',
-			token: ' ✓ ︎'
-		}
-	}
-};
-
 export const log = (...logArgs: any[]) => {
 	const options = {
-		token: defaultConfig.methods.log.token, 
+		token: defaultConfig.methods.log.token,
 		color: defaultConfig.methods.log.color
 	};
 	const loggerInstance = new Logger('log', options);
