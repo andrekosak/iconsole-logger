@@ -12,6 +12,11 @@ Why use it?
 - Just require the `log` function and you are good to go
 - A nice "token" symbol at the beginning of each line (see #Usage)
 
+Usecases
+
+- NodeJS
+- Module bundler for frontend projects like Webpack, Traceur, Babel
+
 ## Getting started
 
 ```
@@ -24,7 +29,14 @@ The simplest way to use the logger is using "Destructuring Assignment":
 
 ```
 const { log, error, success, print } = require('iconsole-logger');
+```
+or in ES6 style
+```
+import { log, error, success, print } from 'iconsole-logger';
+```
 
+
+```
 log(`Log example`)
 error(`Error example`)
 success(`Success example`)
