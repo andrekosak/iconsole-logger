@@ -19,6 +19,8 @@ jobs:
     - run: npm run test
 
   npm-publish:
+    needs: [test]
+    if: success()
     name: npm-publish
     runs-on: ubuntu-latest
     steps:
