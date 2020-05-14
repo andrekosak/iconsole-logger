@@ -17,8 +17,8 @@
 	],
 	"author": "Andre Kosak",
 	"license": "ISC",
-	"homepage": "https://gitlab.com/andrekosak/iconsole-logger/tree/master",
-	"repository": "gitlab:andrekosak/iconsole-logger",
+	"homepage": "https://github.com/andrekosak/iconsole-logger",
+	"repository": "github:andrekosak/iconsole-logger",
 	"devDependencies": {
 		"@types/node": "10.3.0",
 		"typescript": "2.8.3"
