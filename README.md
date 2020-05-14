@@ -19,7 +19,7 @@ Usecases
 
 ## Getting started
 
-```
+```sh
 npm i iconsole-logger -S
 ```
 
@@ -27,16 +27,16 @@ npm i iconsole-logger -S
 
 The simplest way to use the logger is using "Destructuring Assignment":
 
-```
+```javascript
 const { log, error, success, print } = require('iconsole-logger');
 ```
 or in ES6 style
-```
+```javascript
 import { log, error, success, print } from 'iconsole-logger';
 ```
 
 
-```
+```javascript
 log(`Log example`)
 error(`Error example`)
 success(`Success example`)
@@ -45,7 +45,7 @@ print(`Print example`)
 
 Another way is to initialize a variable as an instance of the module, and then use it's methods
 
-```
+```javascript
 const logger = require('iconsole-logger');
 
 logger.log(`Log example`)
