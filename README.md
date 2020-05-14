@@ -1,4 +1,6 @@
-[![License MIT](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC) [![](https://ga-beacon.appspot.com/UA-82522402-2/readme?pixel)](https://github.com/igrigorik/ga-beacon)
+[![License MIT](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC) [![View this project on NPM](https://img.shields.io/npm/v/iconsole-logger.svg)](https://www.npmjs.com/package/iconsole-logger)
+
+[![](https://ga-beacon.appspot.com/UA-82522402-2/readme?pixel)](https://github.com/igrigorik/ga-beacon)
 
 ## Overview
 
@@ -56,4 +58,4 @@ logger.print(`Print example`)
 
 In both cases you should get output in terminal similar to this:
 
-![Output example](https://gitlab.com/andrekosak/iconsole-logger/raw/master/docs/screen_1.png 'Output example')
+![Output example](https://github.com/andrekosak/iconsole-logger/blob/master/docs/screen_1.png?raw=true 'Output example')
