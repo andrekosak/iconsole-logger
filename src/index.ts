@@ -50,9 +50,14 @@ class Logger {
 			breakLength: 80
 		});
 	}
+
+	/**
+	 * Timestamp in desired format
+	 * @param format - Momentjs styled format
+	 */
 	getTimeStamp(format?: string) {
 		format = format || 'HH:mm:ss SSS';
-		return moment().format(moment().format(format));
+		return moment().format(format);
 	}
 }
 

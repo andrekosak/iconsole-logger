@@ -8,7 +8,7 @@ A better console logger. It has timestamps, colors and more.
 
 Why use it?
 
-- Written with Typescript! So types are included for safety and joy
+- Written in Typescript! So types are included for safety and joy
 - No configuration needed
 - Timestamp includes milliseconds (for precise debugging)
 - Just require the `log` function and you are good to go
