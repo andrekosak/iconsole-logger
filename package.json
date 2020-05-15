@@ -24,7 +24,7 @@
 		"@types/node": "10.3.0",
 		"jasmine": "3.5.0",
 		"jasmine-node": "3.0.0",
-		"typescript": "2.8.3"
+		"typescript": "3.4.2"
 	},
 	"dependencies": {
 		"chalk": "2.4.1",
