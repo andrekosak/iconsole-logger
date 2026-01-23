@@ -12,6 +12,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     
+    permissions:
+      contents: read
+    
     strategy:
       matrix:
         node-version: [12, 14, 16, 18, 20]
