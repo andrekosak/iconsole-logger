@@ -7,13 +7,17 @@ jobs:
   test:
     name: test
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+    
     steps:
     - name: Checkout repository
-      uses: actions/checkout@master
+      uses: actions/checkout@v4
     - name: Set up Node.js
-      uses: actions/setup-node@master
+      uses: actions/setup-node@v4
       with:
-        node-version: 10.0.0
+        node-version: 20
     - run: npm install
     - run: npm run build
     - run: npm run test
@@ -23,21 +27,22 @@ jobs:
     if: success()
     name: npm-publish
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      id-token: write
+    
     steps:
     - name: Checkout repository
-      uses: actions/checkout@master
+      uses: actions/checkout@v4
     - name: Set up Node.js
-      uses: actions/setup-node@master
+      uses: actions/setup-node@v4
       with:
-        node-version: 10.0.0
+        node-version: 20
+        registry-url: 'https://registry.npmjs.org'
     - run: npm install
     - run: npm run build
-    - name: Publish if version has been updated
-      uses: pascalgn/npm-publish-action@4f4bf159e299f65d21cd1cbd96fc5d53228036df
-      with: # All of theses inputs are optional
-        tag_name: "v%s"
-        tag_message: "v%s"
-        commit_pattern: "^Release (\\S+)"
-      env: # More info about the environment variables in the README
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
+    - name: Publish to npm with provenance
+      run: npm publish --provenance --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
