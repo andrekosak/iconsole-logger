@@ -1,61 +1,127 @@
-[![License MIT](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC) [![View this project on NPM](https://img.shields.io/npm/v/iconsole-logger.svg)](https://www.npmjs.com/package/iconsole-logger)
+# iconsole-logger
 
-[![](https://ga-beacon.appspot.com/UA-82522402-2/readme?pixel)](https://github.com/igrigorik/ga-beacon)
+[![npm version](https://img.shields.io/npm/v/iconsole-logger.svg)](https://www.npmjs.com/package/iconsole-logger)
+[![license](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
-## Overview
+A small TypeScript-friendly console logger with timestamps, colored output, and readable object formatting.
 
-A better console logger. It has timestamps, colors and more.
+## Features
 
-Why use it?
+- Zero configuration for the common logging cases.
+- Timestamped messages with millisecond precision.
+- Colored log levels powered by `chalk`.
+- Full-depth object inspection for nested data.
+- TypeScript declarations included in the published package.
 
-- Written in Typescript! So types are included for safety and joy
-- No configuration needed
-- Timestamp includes milliseconds (for precise debugging)
-- Just require the `log` function and you are good to go
-- A nice "token" symbol at the beginning of each line (see #Usage)
-
-Usecases
-
-- NodeJS
-- Module bundler for frontend projects like Webpack, Traceur, Babel
-
-## Getting started
+## Installation
 
 ```sh
-npm i iconsole-logger -S
+npm install iconsole-logger
 ```
 
 ## Usage
 
-The simplest way to use the logger is using "Destructuring Assignment":
+CommonJS:
 
-```javascript
-const { log, error, success, print } = require('iconsole-logger');
-```
-or in ES6 style
-```javascript
-import { log, error, success, print } from 'iconsole-logger';
-```
+```js
+const { log, error, success, print, warn } = require('iconsole-logger');
 
-
-```javascript
-log(`Log example`)
-error(`Error example`)
-success(`Success example`)
-print(`Print example`)
+log('Application started');
+success('User created', { id: 42, role: 'admin' });
+warn('Cache miss', { key: 'profile:42' });
+error('Request failed', { statusCode: 500 });
+print('Raw diagnostic message');
 ```
 
-Another way is to initialize a variable as an instance of the module, and then use it's methods
+ES modules or TypeScript:
 
-```javascript
+```ts
+import { log, error, success, print, warn } from 'iconsole-logger';
+
+log('Application started');
+success('User created', { id: 42, role: 'admin' });
+warn('Cache miss', { key: 'profile:42' });
+error('Request failed', { statusCode: 500 });
+print('Raw diagnostic message');
+```
+
+You can also import the package namespace:
+
+```js
 const logger = require('iconsole-logger');
 
-logger.log(`Log example`)
-logger.error(`Error example`)
-logger.success(`Success example`)
-logger.print(`Print example`)
+logger.log('Application started');
+logger.error('Request failed');
 ```
 
-In both cases you should get output in terminal similar to this:
+Example output:
 
 ![Output example](https://github.com/andrekosak/iconsole-logger/blob/master/docs/screen_1.png?raw=true 'Output example')
+
+## API
+
+Each logger function accepts any number of arguments, just like `console.log`.
+
+| Function | Console target | Color | Token | Intended use |
+| --- | --- | --- | --- | --- |
+| `log(...args)` | `console.log` | white | `ℹ︎` | General information |
+| `success(...args)` | `console.log` | green | `✓` | Successful operations |
+| `warn(...args)` | `console.log` | magenta | `⚠︎` | Warnings and recoverable issues |
+| `error(...args)` | `console.error` | red | `✘` | Errors and failed operations |
+| `print(...args)` | `console.log` | gray | `▸` | Plain diagnostic output |
+
+Output is formatted as:
+
+```text
+<token> [HH:mm:ss SSS] <message> <additional arguments>
+```
+
+Objects are formatted with `util.inspect` using unlimited depth, which makes nested data easier to read in terminal and CI logs.
+
+## Development
+
+Install dependencies:
+
+```sh
+npm ci
+```
+
+Build the TypeScript sources:
+
+```sh
+npm run build
+```
+
+Run the test suite:
+
+```sh
+npm test
+```
+
+Run the npm publish command locally as a dry run:
+
+```sh
+npm run publish:npm -- --dry-run
+```
+
+## Publishing
+
+This package is published through GitHub Actions on release commits to `master`.
+
+The publish workflow:
+
+- installs dependencies with `npm ci`;
+- builds and tests the package;
+- checks whether the current package version already exists on npm;
+- publishes with npm provenance enabled;
+- creates a `v<version>` git tag after a successful publish.
+
+The npm publish command is defined in `package.json`:
+
+```sh
+npm run publish:npm
+```
+
+## License
+
+ISC
