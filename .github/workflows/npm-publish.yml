@@ -46,17 +46,27 @@ jobs:
           registry-url: https://registry.npmjs.org
       - run: npm ci
       - run: npm run build
-      - name: Publish if version has been updated
-        id: publish
-        uses: JS-DevTools/npm-publish@v4
-        with:
-          token: ${{ secrets.NPM_AUTH_TOKEN }}
-          access: public
-          provenance: true
+      - name: Upgrade npm for trusted publishing
+        run: npm install -g npm@latest
+      - name: Check package version
+        id: package
+        run: |
+          name=$(node -p 'require("./package.json").name')
+          version=$(node -p 'require("./package.json").version')
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if npm view "$name@$version" version > /dev/null 2>&1; then
+            echo "should_publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_publish=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Publish package
+        if: steps.package.outputs.should_publish == 'true'
+        run: npm run publish:npm
       - name: Create release tag
-        if: steps.publish.outputs.type
+        if: steps.package.outputs.should_publish == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git tag -a "v${{ steps.publish.outputs.version }}" -m "v${{ steps.publish.outputs.version }}"
-          git push origin "v${{ steps.publish.outputs.version }}"
+          git tag -a "v${{ steps.package.outputs.version }}" -m "v${{ steps.package.outputs.version }}"
+          git push origin "v${{ steps.package.outputs.version }}"
