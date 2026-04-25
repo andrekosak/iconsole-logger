@@ -1,15 +1,11 @@
+export type LoggerColor = 'gray' | 'green' | 'magenta' | 'red' | 'white' | 'yellow';
+export type LoggerMethod = 'error' | 'log' | 'print' | 'success' | 'warn';
+
 export interface MethodOptions {
-	color: string;
+	color: LoggerColor;
 	token: string;
 }
 
 export interface LoggerConfig {
-	methods: {
-		print: MethodOptions;
-		warn: MethodOptions;
-		success: MethodOptions;
-		ok: MethodOptions;
-		log: MethodOptions;
-		error: MethodOptions;
-	};
+	methods: Record<LoggerMethod, MethodOptions>;
 }

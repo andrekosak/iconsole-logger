@@ -2,10 +2,6 @@ import { LoggerConfig } from './interfaces';
 
 export const defaultConfig: LoggerConfig = {
 	methods: {
-		ok: {
-			color: 'yellow',
-			token: ' ✔ ︎'
-		},
 		print: {
 			color: 'gray',
 			token: ' ▸ '
