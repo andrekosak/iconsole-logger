@@ -1,6 +1,6 @@
 {
 	"name": "iconsole-logger",
-	"version": "1.0.18",
+	"version": "1.0.19",
 	"description": "A better console logger",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -19,7 +19,14 @@
 	"author": "Andre Kosak",
 	"license": "ISC",
 	"homepage": "https://github.com/andrekosak/iconsole-logger",
-	"repository": "github:andrekosak/iconsole-logger",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/andrekosak/iconsole-logger.git"
+	},
+	"publishConfig": {
+		"access": "public",
+		"provenance": true
+	},
 	"devDependencies": {
 		"@types/jasmine": "3.5.10",
 		"@types/node": "10.3.0",
@@ -27,6 +34,6 @@
 		"typescript": "3.4.2"
 	},
 	"dependencies": {
-		"chalk": "2.4.1"
+		"chalk": "4.1.2"
 	}
 }
